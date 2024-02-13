@@ -7,10 +7,17 @@ resource "aws_elasticache_cluster" "redis" {
   engine_version       = "6.2"
   port                 = 6379
   security_group_ids   = [aws_security_group.allows_redis.id]
+  subnet_group_name    = data.terraform_remote_state.vpc.outputs.
 }
 
 resource "aws_db_parameter_group" "redis-pg" {
   name   = "roboshop-${var.ENV}-redis-pg"
   family = "redis6.x"
 }
+
+resource "aws_elasticache_subnet_group" "redis-subnet-group" {
+  name       = "roboshop-${var.ENV}-redis-subnet-group"
+  subnet_ids = [data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS]
+}
+
 
