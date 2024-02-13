@@ -1,2 +1,2 @@
-# tf-module-docdb
-tf-module-docdb
+# tf-module-redis
+tf-module-redis
