@@ -12,7 +12,7 @@ resource "aws_elasticache_cluster" "redis" {
 
 resource "aws_db_parameter_group" "redis-pg" {
   name   = "roboshop-${var.ENV}-redis-pg"
-  family = "redis6.2"
+  family = "redis6.x"
 }
 
 resource "aws_elasticache_subnet_group" "redis-subnet-group" {
